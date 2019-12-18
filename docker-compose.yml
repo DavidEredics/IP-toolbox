@@ -1,0 +1,8 @@
+version: '3.2'
+
+services:
+  ip-toolbox:
+    image: ip-toolbox
+    build: .
+    ports:
+      - 8080:80

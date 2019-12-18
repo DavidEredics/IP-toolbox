@@ -1,0 +1,12 @@
+version: '3.2'
+
+services:
+  ip-toolbox:
+    image: ip-toolbox_dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html/
