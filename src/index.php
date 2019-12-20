@@ -6,7 +6,10 @@ class IpToolbox
 
   function set_ip($ip) { $this->ip = $ip; }
 
-  function Ip() { echo $this->ip; }
+  function Ip() {
+    header('Content-Type: text/plain');
+    echo $this->ip;
+  }
 
   function Json() {
     $json = ['ip' => $this->ip];
