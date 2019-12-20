@@ -1,5 +1,4 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME}.php -f [NC]
-  RewriteRule ^ %{REQUEST_URI}.php [L]
+  RewriteRule ^([a-zA-Z0-9]+)/*([a-zA-Z0-9]*)$ index.php?q1=$1&q2=$2
 </IfModule>
