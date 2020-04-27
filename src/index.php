@@ -3,15 +3,11 @@
 class IpToolbox
 {
   public $ip;
-  public $ips;
 
   function set_ip($ip) {
     if (strstr($ip, ', ')) {
       $ips = explode(', ', $ip);
       $ip = $ips[0];
-      $this->ips = $ips;
-    } else {
-      $this->ips = $ip;
     }
     $this->ip = $ip;
   }
@@ -20,18 +16,9 @@ class IpToolbox
     header('Content-Type: text/plain');
     echo $this->ip;
   }
-  function Ips() {
-    header('Content-Type: text/plain');
-    echo implode(", ", $this->ips);
-  }
 
   function Json() {
     $json = ['ip' => $this->ip];
-    header('Content-Type: application/json');
-    echo json_encode($json);
-  }
-  function JsonIps() {
-    $json = ['ip' => $this->ips];
     header('Content-Type: application/json');
     echo json_encode($json);
   }
@@ -47,8 +34,8 @@ if (isset($_GET['q1'])) {
     case 'json':
       if (isset($_GET['q2'])) {
         switch ($_GET['q2']) {
-          case 'ips':
-            $iptoolbox->JsonIps();
+          case 'ip':
+            $iptoolbox->Json();
             break;
           default:
             $iptoolbox->Json();
@@ -58,8 +45,8 @@ if (isset($_GET['q1'])) {
         $iptoolbox->Json();
       }
       break;
-    case 'ips':
-      $iptoolbox->Ips();
+    case 'ip':
+      $iptoolbox->Ip();
       break;
     default:
       $iptoolbox->Ip();

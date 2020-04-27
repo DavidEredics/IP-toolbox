@@ -10,9 +10,7 @@ API to get IP address and some simple info
 | path | Content-Type | response |
 |------|:------------:|:--------:|
 | **/** | text/plain | ip address |
-| **/ips** | text/plain | all ip addresses |
 | **/json** | application/json | ip address |
-| **/json/ips** | application/json | all ip addresses |
 
 ## License
 [MIT](LICENSE)
