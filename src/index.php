@@ -1,57 +1,40 @@
 <?php
 
-class IpToolbox
-{
-  public $ip;
-
-  function set_ip($ip) {
-    if (strstr($ip, ', ')) {
-      $ips = explode(', ', $ip);
-      $ip = $ips[0];
-    }
-    $this->ip = $ip;
-  }
-
-  function Ip() {
-    header('Content-Type: text/plain');
-    echo $this->ip;
-  }
-
-  function Json() {
-    $json = ['ip' => $this->ip];
-    header('Content-Type: application/json');
-    echo json_encode($json);
-  }
-}
+require_once('IpToolbox.php');
 
 $iptoolbox = new IpToolbox;
 
 $ip =(isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
-$iptoolbox->set_ip($ip);
+$iptoolbox->setIp($ip);
 
 if (isset($_GET['q1'])) {
   switch ($_GET['q1']) {
     case 'json':
+      header('Content-Type: application/json');
       if (isset($_GET['q2'])) {
         switch ($_GET['q2']) {
           case 'ip':
-            $iptoolbox->Json();
+            $json = ['ip' => $iptoolbox->ip()];
             break;
           default:
-            $iptoolbox->Json();
+            $json = ['ip' => $iptoolbox->ip()];
             break;
         }
       } else {
-        $iptoolbox->Json();
+        $json = ['ip' => $iptoolbox->ip()];
       }
+      echo json_encode($json);
       break;
     case 'ip':
-      $iptoolbox->Ip();
+      header('Content-Type: text/plain');
+      echo $iptoolbox->ip();
       break;
     default:
-      $iptoolbox->Ip();
+      header('Content-Type: text/plain');
+      echo $iptoolbox->ip();
       break;
   }
 } else {
-  $iptoolbox->Ip();
+  header('Content-Type: text/plain');
+  echo $iptoolbox->ip();
 }
