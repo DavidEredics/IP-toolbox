@@ -17,7 +17,8 @@ if (isset($_GET['q1'])) {
             $json = ['ip' => $iptoolbox->ip()];
             break;
           default:
-            $json = ['ip' => $iptoolbox->ip()];
+            http_response_code(404);
+            $json = ['error' => "Path not found"];
             break;
         }
       } else {
@@ -30,8 +31,9 @@ if (isset($_GET['q1'])) {
       echo $iptoolbox->ip();
       break;
     default:
+      http_response_code(404);
       header('Content-Type: text/plain');
-      echo $iptoolbox->ip();
+      echo "Path not found";
       break;
   }
 } else {
