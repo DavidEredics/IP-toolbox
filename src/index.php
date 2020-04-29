@@ -7,11 +7,11 @@ $iptoolbox = new IpToolbox;
 $ip =(isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
 $iptoolbox->setIp($ip);
 
-if (isset($_GET['q1'])) {
+if (isset($_GET['q1']) && $_GET['q1'] != "") {
   switch ($_GET['q1']) {
     case 'json':
       header('Content-Type: application/json');
-      if (isset($_GET['q2'])) {
+      if (isset($_GET['q2']) && $_GET['q2'] != "") {
         switch ($_GET['q2']) {
           case 'ip':
             $json = ['ip' => $iptoolbox->ip()];
