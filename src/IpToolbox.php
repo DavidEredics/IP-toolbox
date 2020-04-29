@@ -15,5 +15,9 @@ class IpToolbox
   function ip() {
     return $this->ip;
   }
+  
+  function hostname() {
+    return gethostbyaddr($this->ip);
+  }
 
 }
