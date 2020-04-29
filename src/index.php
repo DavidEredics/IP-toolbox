@@ -20,6 +20,11 @@ if (isset($_GET['q1']) && $_GET['q1'] != "") {
           case 'host':
             $json = ['hostname' => $iptoolbox->hostname()];
             break;
+          case 'all':
+          case 'a':
+            $json = ['ip' => $iptoolbox->ip(),
+              'hostname' => $iptoolbox->hostname()];
+            break;
           default:
             http_response_code(404);
             $json = ['error' => "Path not found"];
@@ -38,6 +43,12 @@ if (isset($_GET['q1']) && $_GET['q1'] != "") {
     case 'host':
       header('Content-Type: text/plain');
       echo $iptoolbox->hostname();
+      break;
+    case 'all':
+    case 'a':
+      header('Content-Type: text/plain');
+      echo 'ip: ', $iptoolbox->ip(), PHP_EOL,
+        'hostname: ', $iptoolbox->hostname();
       break;
     default:
       http_response_code(404);

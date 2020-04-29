@@ -11,8 +11,10 @@ API to get IP address and some simple info
 |------|:------------:|:--------:|
 | **/, /ip** | text/plain | ip address |
 | **/hostname, /host** | text/plain | hostname |
+| **/all, /a** | text/plain | all data |
 | **/json, /json/ip** | application/json | ip address |
 | **/json/hostname, /json/host** | application/json | hostname |
+| **/json/all, /json/a** | application/json | all data |
 
 ## License
 [MIT](LICENSE)
