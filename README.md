@@ -9,8 +9,8 @@ API to get IP address and some simple info
 ## Available routes
 | path | Content-Type | response |
 |------|:------------:|:--------:|
-| **/** | text/plain | ip address |
-| **/json** | application/json | ip address |
+| **/, /ip** | text/plain | ip address |
+| **/json, /json/ip** | application/json | ip address |
 
 ## License
 [MIT](LICENSE)
